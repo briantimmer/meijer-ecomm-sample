@@ -4,6 +4,7 @@ import GlobalState from "./context/GlobalState";
 import MainLayout from "./components/layout/MainLayout";
 
 import Home from './views/Home';
+import Cart from './views/Cart';
 import NotFound from './views/NotFound';
 
 import './App.scss';
@@ -19,7 +20,7 @@ function App() {
         <Router basename={baseUrl} history={history}>
           <Switch>
             <Route exact path="/" component={Home} />
-            
+            <Route exact path="/cart" component={Cart} />
             <Route component={NotFound} />
           </Switch>
         </Router>

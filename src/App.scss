@@ -5,3 +5,14 @@
     cursor: pointer;
   }
 }
+
+.narrow-col {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.cart-line-item {
+  img {
+    width: 100px;
+  }
+}
