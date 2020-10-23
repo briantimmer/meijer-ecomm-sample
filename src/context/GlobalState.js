@@ -3,9 +3,12 @@ import _ from 'lodash';
 import GlobalContext from "./GlobalContext";
 import API from "../util/API";
 
+const loginUsername = "meijer";
+const loginPassword = "ecomm"
+
 class GlobalState extends Component {
   state = {
-    profile: {},
+    profile: null,
     products: [],
     cartItems: [],
     cartTotal: ''
@@ -32,24 +35,51 @@ class GlobalState extends Component {
         lineTotal: parseFloat(product.price.substring(1))
       });
     }
-    
-    let total = 0;
-    _.each(cartItems, function (item) {
-      total += item.lineTotal;
-    });
 
-    this.setState({ cartItems: cartItems });
-    this.setState({ cartTotal: total });
+    this.setState({ cartItems });
+    this.calculateCartTotal(cartItems);
   };
 
   removeFromCart = (item) => {
-    this.setState({ 
-      cartItems: this.state.cartItems.filter(cartItem => { return cartItem.code !== item.code })
-    });
+    const cartItems = this.state.cartItems.filter(cartItem => { return cartItem.code !== item.code });
+    this.setState({ cartItems });
+    this.calculateCartTotal(cartItems);
   };
 
   clearCart = () => {
     this.setState({cartItems: []});
+    this.calculateCartTotal();
+  };
+
+  login = (username, password) => {
+    if (username === loginUsername && password === loginPassword) {
+      this.setState({
+        profile: {
+          id: 1,
+          username: loginUsername,
+          name: "Meijer Shopper"
+        }
+      });
+      return true;
+    }
+    
+    return false;
+  };
+
+  logout = () => {
+    this.setState({
+      profile: null,
+      cartItems: [],
+      cartTotal: ''
+    });
+  };
+
+  calculateCartTotal = (cartItems) => {
+    let total = 0;
+    _.each(cartItems, function (item) {
+      total += item.lineTotal;
+    });
+    this.setState({ cartTotal: total });
   }
 
   render() {
@@ -63,7 +93,9 @@ class GlobalState extends Component {
           getProducts: this.getProducts,
           addToCart: this.addToCart,
           removeFromCart: this.removeFromCart,
-          clearCart: this.clearCart
+          clearCart: this.clearCart,
+          login: this.login,
+          logout: this.logout
         }}
       >
         {this.props.children}

@@ -1,12 +1,14 @@
 import React from "react";
 
 export default React.createContext({
-  profile: {},
+  profile: null,
   products: [],
   cartItems: [],
   cartTotal: '',
   getProducts: () => {},
   addToCart: () => {},
   removeFromCart: () => {},
-  clearCart: () => {}
+  clearCart: () => {},
+  login: () => {},
+  logout: () => {}
 });
