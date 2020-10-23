@@ -2,9 +2,17 @@ import React, { Component } from "react";
 import { Container, Row, Col, Card, CardBody, FormGroup, Input, Button } from 'reactstrap';
 import GlobalContext from "../context/GlobalContext";
 
+/**
+ * Login view
+ */
 class Login extends Component {
   static contextType = GlobalContext;
 
+  /**
+   * Builds the initial state of the component
+   * @constructor
+   * @param {object} props 
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -14,12 +22,21 @@ class Login extends Component {
     };
   }
 
+  /**
+   * Monitors to see if the user presses the [Enter] when filling
+   * in the login form
+   * @param {object} e Key code object of the key pressed
+   */
   handleKeyPress = (e) => {
     if (e.key === "Enter") {
       this.login();
     }
   };
 
+  /**
+   * Attempts to log in the user. Simple validation of required fields.
+   * If the login is successful the profile is redirected to the home page.
+   */
   login = () => {
     if (this.state.username === "" || this.state.password === "") {
       this.setState({signinError: "Both Username and Password are required."});

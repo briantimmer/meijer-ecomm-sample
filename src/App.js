@@ -15,6 +15,9 @@ const createHistory = require("history").createBrowserHistory;
 const history = createHistory();
 const baseUrl = document.getElementsByTagName("base")[0].getAttribute("href");
 
+/**
+ * Main App component that contains the site router and auth route guard
+ */
 function App() {
   return (
     <GlobalState>

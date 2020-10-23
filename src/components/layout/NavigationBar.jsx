@@ -1,4 +1,4 @@
-import React, { useContext, Fragment, useEffect, useState } from "react";
+import React, { useContext, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Container, Badge } from "reactstrap";
@@ -6,9 +6,17 @@ import GlobalContext from "../../context/GlobalContext";
 import { formatAsCurrency } from '../../util/formatAsCurrency';
 import logo from '../../logo.svg';
 
+/**
+ * Main navigation for the site.
+ * @param {object} props 
+ */
 export const NavigationBar = (props) => {
   const { profile, cartItems, cartTotal, logout } = useContext(GlobalContext);
 
+  /**
+   * Function to clear the profile in state and redirect the customer to the
+   * login page
+   */
   const logoutProfile = () => {
     try {
       logout();
@@ -24,7 +32,7 @@ export const NavigationBar = (props) => {
       <Navbar color="light" light expand="md">
         <Container>
           <NavbarBrand onClick={() => props.history.push("/")} alt='Meijer Produce' className='logo'>
-            <img src={logo} />
+            <img src={logo} alt='Meijer Produce' />
           </NavbarBrand>
           <Nav className="justify-content-end" navbar>
             {profile ? (

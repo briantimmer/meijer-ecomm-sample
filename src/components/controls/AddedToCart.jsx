@@ -4,6 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 import { Container, Row, Col, Button } from 'reactstrap';
 
+/**
+ * Content and functionality displayed after a customer adds a product to the cart
+ * @param {object} props AddedToCart propTypes 
+ */
 export const AddedToCart = (props) => {
   return (
     <Container>
@@ -25,10 +29,25 @@ export const AddedToCart = (props) => {
 }
 
 AddedToCart.propTypes = {
+  /**
+   * Product's name
+   */
   name: PropTypes.string,
+  /**
+   * Product's price
+   */
   price: PropTypes.string,
+  /**
+   * Product's image
+   */
   image: PropTypes.string,
+  /**
+   * Callback function to continue shopping
+   */
   continueShoppingClick: PropTypes.func,
+  /**
+   * Callback function to view cart
+   */
   goToCartClick: PropTypes.func
 }
 

@@ -4,6 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 import { Card, CardBody, Button, CardImg } from 'reactstrap';
 
+/**
+ * Product Grid Page product tile
+ * @param {object} props Tile propTypes
+ */
 export const Tile = (props) => {
   return (
     <Card>
@@ -20,10 +24,25 @@ export const Tile = (props) => {
 }
 
 Tile.propTypes = {
+  /**
+   * Product's name
+   */
   name: PropTypes.string,
+  /**
+   * Product's price
+   */
   price: PropTypes.string,
+  /**
+   * Product's image
+   */
   image: PropTypes.string,
+  /**
+   * Product's code
+   */
   code: PropTypes.number,
+  /**
+   * Callback function to add the product to the cart
+   */
   addToCartClick: PropTypes.func
 }
 

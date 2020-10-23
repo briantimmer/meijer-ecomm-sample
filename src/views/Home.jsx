@@ -5,15 +5,26 @@ import Tile from '../components/controls/Tile';
 import AddedToCart from "../components/controls/AddedToCart";
 import pluralize from 'pluralize';
 
+/**
+ * Main home view that displays the Product Grid.
+ * @param {object} props 
+ */
 export const Home = (props) => {
   const { products, getProducts, addToCart } = useContext(GlobalContext);
   const [addedToCartModal, setAddedToCartModal] = useState(false);
   const [addedProduct, setAddedProduct] = useState();
 
+  /**
+   * Calls in the context method to pull in products
+   */
   useEffect(() => {
     getProducts();
   });
 
+  /**
+   * Adds a product to the cart and opens the Added To Cart modal
+   * @param {object} product Product to be added to the cart
+   */
   const addProductToCart = (product) => {
     addToCart(product);
     setAddedProduct(product);

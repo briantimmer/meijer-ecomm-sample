@@ -5,12 +5,20 @@ import { Container, Row, Col, Table, Card, CardBody, Button, CardText, Modal, Mo
 import GlobalContext from "../context/GlobalContext";
 import { formatAsCurrency } from '../util/formatAsCurrency';
 
+/**
+ * Cart view that lists out all cart line items.
+ * Displays an 'empty' message to the customer.
+ * @param {object} props 
+ */
 export const Cart = (props) => {
   const { cartItems, cartTotal, removeFromCart, clearCart } = useContext(GlobalContext);
   const [checkoutModal, setCheckoutModal] = useState(false);
 
   const toggleCheckoutModal = () => setCheckoutModal(!checkoutModal);
 
+  /**
+   * Clears the cart and redirects to home
+   */
   const startOverClick = () => {
     clearCart();
     props.history.push("/");
@@ -45,7 +53,7 @@ export const Cart = (props) => {
                         <FontAwesomeIcon icon={Icons.faTrash} />
                       </Button>
                     </td>
-                    <td className="narrow-col"><img src={item.image} /></td>
+                    <td className="narrow-col"><img alt={item.name} src={item.image} /></td>
                     <td><strong>{item.name}</strong></td>
                     <td>{item.price}</td>
                     <td className="narrow-col">{item.qty}</td>

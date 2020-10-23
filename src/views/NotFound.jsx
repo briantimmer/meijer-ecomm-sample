@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+/**
+ * Simple 404 page
+ */
 class NotFound extends Component {
   render() {
     return (
