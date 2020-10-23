@@ -19,7 +19,7 @@ export const Home = (props) => {
    */
   useEffect(() => {
     getProducts();
-  });
+  }, [getProducts]);
 
   /**
    * Adds a product to the cart and opens the Added To Cart modal
