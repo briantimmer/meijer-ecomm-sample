@@ -1,14 +1,22 @@
 import React, { useContext, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Container, Badge } from "reactstrap";
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Container,
+  Badge,
+} from "reactstrap";
 import GlobalContext from "../../context/GlobalContext";
-import { formatAsCurrency } from '../../util/formatAsCurrency';
-import logo from '../../logo.svg';
+import { formatAsCurrency } from "../../util/formatAsCurrency";
+import logo from "../../logo.svg";
 
 /**
  * Main navigation for the site.
- * @param {object} props 
+ * @param {object} props
  */
 export const NavigationBar = (props) => {
   const { profile, cartItems, cartTotal, logout } = useContext(GlobalContext);
@@ -20,30 +28,35 @@ export const NavigationBar = (props) => {
   const logoutProfile = () => {
     try {
       logout();
-      props.history.push('/login');
+      props.history.push("/login");
+    } catch (err) {
+      window.location.href = "/login";
     }
-    catch (err) {
-      window.location.href = '/login';
-    }
-  }
+  };
 
   return (
     <Fragment>
       <Navbar color="light" light expand="md">
         <Container>
-          <NavbarBrand onClick={() => props.history.push("/")} alt='Meijer Produce' className='logo'>
-            <img src={logo} alt='Meijer Produce' />
+          <NavbarBrand
+            onClick={() => props.history.push("/")}
+            alt="Meijer Produce"
+            className="logo"
+          >
+            <img src={logo} alt="Meijer Produce" />
           </NavbarBrand>
           <Nav className="justify-content-end" navbar>
             {profile ? (
               <>
                 <NavItem>
                   <NavLink onClick={() => props.history.push("/cart")}>
-                    {cartItems.length > 0 && 
-                      <small className='mr-1 cart-total'>
-                        <Badge color="success" pill>{formatAsCurrency(cartTotal)}</Badge>
+                    {cartItems.length > 0 && (
+                      <small className="mr-1 cart-total">
+                        <Badge color="success" pill>
+                          {formatAsCurrency(cartTotal)}
+                        </Badge>
                       </small>
-                    }
+                    )}
                     <FontAwesomeIcon icon={Icons.faShoppingCart} />
                   </NavLink>
                 </NavItem>
@@ -52,7 +65,7 @@ export const NavigationBar = (props) => {
                     <FontAwesomeIcon icon={Icons.faSignOutAlt} />
                   </NavLink>
                 </NavItem>
-              </>  
+              </>
             ) : (
               <NavItem>
                 <NavLink onClick={() => props.history.push("/login")}>
@@ -65,6 +78,6 @@ export const NavigationBar = (props) => {
       </Navbar>
     </Fragment>
   );
-}
+};
 
 export default NavigationBar;

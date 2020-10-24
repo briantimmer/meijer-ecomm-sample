@@ -1,15 +1,15 @@
-import React from 'react';
-import { Router, Route, Switch } from 'react-router';
-import GlobalState from './context/GlobalState';
-import MainLayout from './components/layout/MainLayout';
-import HasLoggedIn from './components/hoc/HasLoggedIn';
+import React from "react";
+import { Router, Route, Switch } from "react-router";
+import GlobalState from "./context/GlobalState";
+import MainLayout from "./components/layout/MainLayout";
+import HasLoggedIn from "./components/hoc/HasLoggedIn";
 
-import Home from './views/Home';
-import Cart from './views/Cart';
-import Login from './views/Login';
-import NotFound from './views/NotFound';
+import Home from "./views/Home";
+import Cart from "./views/Cart";
+import Login from "./views/Login";
+import NotFound from "./views/NotFound";
 
-import './App.scss';
+import "./App.scss";
 
 const createHistory = require("history").createBrowserHistory;
 const history = createHistory();

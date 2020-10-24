@@ -1,8 +1,8 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
-import { Card, CardBody, Button, CardImg } from 'reactstrap';
+import { Card, CardBody, Button, CardImg } from "reactstrap";
 
 /**
  * Product Grid Page product tile
@@ -16,12 +16,14 @@ export const Tile = (props) => {
         <h4>{props.name}</h4>
         <strong>{props.price}</strong>
         <p className="mt-2 text-center">
-          <Button onClick={props.addToCartClick}><FontAwesomeIcon icon={Icons.faPlusCircle} /> Add to Cart</Button>
+          <Button onClick={props.addToCartClick}>
+            <FontAwesomeIcon icon={Icons.faPlusCircle} /> Add to Cart
+          </Button>
         </p>
       </CardBody>
     </Card>
-  )
-}
+  );
+};
 
 Tile.propTypes = {
   /**
@@ -43,7 +45,7 @@ Tile.propTypes = {
   /**
    * Callback function to add the product to the cart
    */
-  addToCartClick: PropTypes.func
-}
+  addToCartClick: PropTypes.func,
+};
 
 export default Tile;

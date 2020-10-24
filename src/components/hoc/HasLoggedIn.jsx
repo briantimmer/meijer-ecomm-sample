@@ -3,12 +3,12 @@ import GlobalContext from "../../context/GlobalContext";
 
 /**
  * HOC function wrapper for making sure the customer is logged in
- * @param {object} ComposedComponent 
+ * @param {object} ComposedComponent
  */
 export default function (ComposedComponent) {
   /**
    * Functional component that confirms the customer is logged in
-   * @param {object} props 
+   * @param {object} props
    */
   const HasLoggedIn = (props) => {
     const { profile } = useContext(GlobalContext);
@@ -21,8 +21,7 @@ export default function (ComposedComponent) {
     useEffect(() => {
       if (profile) {
         setIsAuthenticated(true);
-      } 
-      else {
+      } else {
         setIsAuthenticated(false);
       }
     }, [profile]);

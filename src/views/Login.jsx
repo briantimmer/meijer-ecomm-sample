@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Card, CardBody, FormGroup, Input, Button } from 'reactstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardBody,
+  FormGroup,
+  Input,
+  Button,
+} from "reactstrap";
 import GlobalContext from "../context/GlobalContext";
 
 /**
@@ -11,7 +20,7 @@ class Login extends Component {
   /**
    * Builds the initial state of the component
    * @constructor
-   * @param {object} props 
+   * @param {object} props
    */
   constructor(props) {
     super(props);
@@ -39,18 +48,21 @@ class Login extends Component {
    */
   login = () => {
     if (this.state.username === "" || this.state.password === "") {
-      this.setState({signinError: "Both Username and Password are required."});
-    }
-    else {
-      const loggedIn = this.context.login(this.state.username, this.state.password);
+      this.setState({
+        signinError: "Both Username and Password are required.",
+      });
+    } else {
+      const loggedIn = this.context.login(
+        this.state.username,
+        this.state.password
+      );
       if (!loggedIn) {
-        this.setState({signinError: "Incorrect Username or Password."});
-      }
-      else {
-        this.props.history.push('/');
+        this.setState({ signinError: "Incorrect Username or Password." });
+      } else {
+        this.props.history.push("/");
       }
     }
-  }
+  };
 
   render() {
     return (
@@ -67,7 +79,9 @@ class Login extends Component {
                       name="username"
                       placeholder="Username"
                       value={this.state.username}
-                      onChange={(event) => this.setState({ username: event.target.value })}
+                      onChange={(event) =>
+                        this.setState({ username: event.target.value })
+                      }
                       onKeyPress={this.handleKeyPress}
                     />
                   </Col>
@@ -79,7 +93,9 @@ class Login extends Component {
                       name="password"
                       placeholder="Password"
                       value={this.state.password}
-                      onChange={(event) => this.setState({ password: event.target.value })}
+                      onChange={(event) =>
+                        this.setState({ password: event.target.value })
+                      }
                       onKeyPress={this.handleKeyPress}
                     />
                   </Col>
@@ -90,7 +106,10 @@ class Login extends Component {
                       color="primary"
                       size="lg"
                       block
-                      onClick={() => this.login()}>Sign In</Button>
+                      onClick={() => this.login()}
+                    >
+                      Sign In
+                    </Button>
                     {this.state.signinError !== "" && (
                       <p className="mt-2 text-danger">
                         <strong>{this.state.signinError}</strong>

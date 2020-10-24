@@ -1,13 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Container, Row, Col, CardDeck, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import {
+  Container,
+  Row,
+  Col,
+  CardDeck,
+  Modal,
+  ModalHeader,
+  ModalBody,
+} from "reactstrap";
 import GlobalContext from "../context/GlobalContext";
-import Tile from '../components/controls/Tile';
+import Tile from "../components/controls/Tile";
 import AddedToCart from "../components/controls/AddedToCart";
-import pluralize from 'pluralize';
+import pluralize from "pluralize";
 
 /**
  * Main home view that displays the Product Grid.
- * @param {object} props 
+ * @param {object} props
  */
 export const Home = (props) => {
   const { products, getProducts, addToCart } = useContext(GlobalContext);
@@ -29,9 +37,9 @@ export const Home = (props) => {
     addToCart(product);
     setAddedProduct(product);
     toggleAddedToCartModal();
-  }
+  };
 
-  const handleViewCartClick = () => props.history.push('/cart');
+  const handleViewCartClick = () => props.history.push("/cart");
 
   const toggleAddedToCartModal = () => setAddedToCartModal(!addedToCartModal);
 
@@ -42,27 +50,31 @@ export const Home = (props) => {
           <h4 className="my-3">Pick your produce!</h4>
           <CardDeck>
             {products.map((product, index) => (
-              <Tile 
-                key={index} 
-                addToCartClick={() => addProductToCart(product)} 
-                {...product} />
+              <Tile
+                key={index}
+                addToCartClick={() => addProductToCart(product)}
+                {...product}
+              />
             ))}
           </CardDeck>
-          {addedProduct && 
+          {addedProduct && (
             <Modal isOpen={addedToCartModal} toggle={toggleAddedToCartModal}>
-              <ModalHeader toggle={toggleAddedToCartModal}>Yum! You're picking up some {pluralize(addedProduct.name)}!</ModalHeader>
+              <ModalHeader toggle={toggleAddedToCartModal}>
+                Yum! You're picking up some {pluralize(addedProduct.name)}!
+              </ModalHeader>
               <ModalBody>
-                <AddedToCart 
-                  continueShoppingClick={toggleAddedToCartModal} 
+                <AddedToCart
+                  continueShoppingClick={toggleAddedToCartModal}
                   goToCartClick={handleViewCartClick}
-                  {...addedProduct} />
+                  {...addedProduct}
+                />
               </ModalBody>
             </Modal>
-          }
+          )}
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
 export default Home;
