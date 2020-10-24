@@ -8,6 +8,7 @@ import {
   FormGroup,
   Input,
   Button,
+  FormText,
 } from "reactstrap";
 import GlobalContext from "../context/GlobalContext";
 
@@ -84,6 +85,9 @@ class Login extends Component {
                       }
                       onKeyPress={this.handleKeyPress}
                     />
+                    <FormText color="muted">
+                      <pre>Hint: meijer</pre>
+                    </FormText>
                   </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -98,6 +102,9 @@ class Login extends Component {
                       }
                       onKeyPress={this.handleKeyPress}
                     />
+                    <FormText color="muted">
+                      <pre>Hint: ecomm</pre>
+                    </FormText>
                   </Col>
                 </FormGroup>
                 <FormGroup row>

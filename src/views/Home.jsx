@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as Icons from "@fortawesome/free-solid-svg-icons";
 import {
   Container,
   Row,
@@ -47,16 +49,25 @@ export const Home = (props) => {
     <Container>
       <Row>
         <Col>
-          <h4 className="my-3">Pick your produce!</h4>
-          <CardDeck>
-            {products.map((product, index) => (
-              <Tile
-                key={index}
-                addToCartClick={() => addProductToCart(product)}
-                {...product}
-              />
-            ))}
-          </CardDeck>
+          {products.length === 0 ? (
+            <div className="mt-4 text-center">
+              <FontAwesomeIcon icon={Icons.faSpinner} spin /> Picking the
+              produce...
+            </div>
+          ) : (
+            <>
+              <h4 className="my-3">Pick your produce!</h4>
+              <CardDeck>
+                {products.map((product, index) => (
+                  <Tile
+                    key={index}
+                    addToCartClick={() => addProductToCart(product)}
+                    {...product}
+                  />
+                ))}
+              </CardDeck>
+            </>
+          )}
           {addedProduct && (
             <Modal isOpen={addedToCartModal} toggle={toggleAddedToCartModal}>
               <ModalHeader toggle={toggleAddedToCartModal}>
